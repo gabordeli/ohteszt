@@ -12,4 +12,11 @@ enum Tantargy: string
     case ANGOL_NYELV = 'ANGOL_NYELV';
     case INFORMATIKA = 'INFORMATIKA';
     case FIZIKA = 'FIZIKA';
+    case BIOLOGIA = 'BIOLOGIA';
+    case KEMIA = 'KEMIA';
+    case FRANCIA = 'FRANCIA';
+    case NEMET = 'NEMET';
+    case OLASZ = 'OLASZ';
+    case OROSZ = 'OROSZ';
+    case SPANYOL = 'SPANYOL';
 }

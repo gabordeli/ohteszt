@@ -12,17 +12,19 @@ error_reporting(\E_ALL & ~\E_NOTICE & ~\E_DEPRECATED & ~\E_WARNING);
 include __DIR__.'/../vendor/autoload.php';
 
 use Src\Transformer\Transformer;
+use Src\Calculator\Calculator;
 
 try {
     $exampleData1 = require 'example1.php';
     $inputData1 = Transformer::fromArray($exampleData1);
+
+    Calculator::calculate($inputData1);
 
     dd($inputData1);
 
 
 
 }catch (\Exception $e) {
-
 
     dd($e->getMessage());
 

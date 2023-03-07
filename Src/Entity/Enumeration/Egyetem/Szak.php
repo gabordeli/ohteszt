@@ -7,4 +7,5 @@ namespace Src\Entity\Enumeration\Egyetem;
 enum Szak: string
 {
     case PROGRAMTERVEZO_INFORMATIKUS = 'PROGRAMTERVEZO_INFORMATIKUS';
+    case ANGLISZTIKA = 'ANGLISZTIKA';
 }

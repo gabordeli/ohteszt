@@ -17,7 +17,7 @@ class Transformer extends GenericTransformer
         TobbletpontokValidator::NAME => TobbletpontokValidator::class,
     ];
 
-    public static function handleOutput(): InputData
+    public static function transform(): InputData
     {
         return (new InputData())
                 ->setValasztottSzak(self::$output[ValasztottSzakValidator::NAME])

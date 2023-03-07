@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Src\Transformer;
 
 use Src\Entity\ValueObject\InputData;
-use Src\Transformer\Validator\ValidatorTrait;
 
 abstract class GenericTransformer
 {
-    use ValidatorTrait;
+    use TransformerValidatorTrait;
 
     protected static array $input;
     protected static array $output;
@@ -22,8 +21,8 @@ abstract class GenericTransformer
 
         self::validate();
 
-        return static::handleOutput();
+        return static::transform();
     }
 
-    abstract public static function handleOutput();
+    abstract public static function transform();
 }
