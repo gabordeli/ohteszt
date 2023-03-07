@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="616da937-c4d9-4ce8-aa93-b525a8dfc321" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php-cs-fixer.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.php-cs-fixer.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php-cs-fixer.php" beforeDir="false" afterPath="$PROJECT_DIR$/.php-cs-fixer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Calculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Calculator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Calculator/CalculatorValidatorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/CalculatorValidatorTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Calculators/ELTE_IK_ProgramtervezoInformatikusCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Rules/ELTE_IK_ProgramtervezoInformatikus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Calculators/PPKE_BTK_Anglisztika.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Rules/PPKE_BTK_Anglisztika.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/CalculatorCountException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RuleCountException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/CalculatorException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RuleException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredCalculatorException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredRuleException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Collection/GenericCollection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Collection/GenericCollection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/example1.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/example1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredAlwaysMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredAlwaysMissingInInputException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredOneRuleSpecificException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredOneRuleException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredRuleSpecificException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredRuleMissingInInputException.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,11 +79,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678178189011</updated>
-      <workItem from="1678178190170" duration="11135000" />
+      <workItem from="1678178190170" duration="12496000" />
     </task>
+    <task id="LOCAL-00001" summary="basic points calculation">
+      <created>1678190254687</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678190254687</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="basic points calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic points calculation" />
   </component>
 </project>

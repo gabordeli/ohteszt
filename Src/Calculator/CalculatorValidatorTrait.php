@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Src\Calculator;
 
-use Src\Calculator\Exception\RequiredAlwaysMissingException;
-use Src\Calculator\Exception\RequiredOneRuleSpecificException;
+use Src\Calculator\Exception\RequiredAlwaysMissingInInputException;
+use Src\Calculator\Exception\RequiredOneRuleException;
 use Src\Calculator\Exception\RequiredRuleException;
-use Src\Calculator\Exception\RequiredRuleSpecificException;
+use Src\Calculator\Exception\RequiredRuleMissingInInputException;
 use Src\Calculator\Exception\RuleCountException;
 use Src\Calculator\Rules\RuleInterface;
 use Src\Entity\ValueObject\ErettsegiEredmeny;
@@ -45,7 +45,7 @@ trait CalculatorValidatorTrait
         }
 
         if (\count(self::$requiredAlways) > $passed) {
-            throw RequiredAlwaysMissingException::create();
+            throw RequiredAlwaysMissingInInputException::create();
         }
     }
 
@@ -64,7 +64,7 @@ trait CalculatorValidatorTrait
         }
 
         if (false === $passed) {
-            throw RequiredRuleSpecificException::create($rule::getRequired()->value);
+            throw RequiredRuleMissingInInputException::create($rule::getRequired()->value);
         }
     }
 
@@ -83,7 +83,7 @@ trait CalculatorValidatorTrait
         }
 
         if (false === $passed) {
-            throw RequiredOneRuleSpecificException::create();
+            throw RequiredOneRuleException::create();
         }
     }
 }

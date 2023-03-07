@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Calculator\Exception;
 
-class RequiredRuleSpecificException extends \Exception
+class RequiredRuleMissingInInputException extends \Exception
 {
     public static function create(string $required): self
     {
