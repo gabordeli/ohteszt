@@ -23,9 +23,4 @@ abstract class GenericCollection
     {
         return \count($this->values);
     }
-
-    public function isEmpty(): bool
-    {
-        return 0 === $this->count();
-    }
 }

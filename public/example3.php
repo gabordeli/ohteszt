@@ -9,16 +9,6 @@ return [
     ],
     'erettsegi-eredmenyek' => [
         [
-            'nev' => 'magyar nyelv és irodalom',
-            'tipus' => 'közép',
-            'eredmeny' => '70%',
-        ],
-        [
-            'nev' => 'történelem',
-            'tipus' => 'közép',
-            'eredmeny' => '80%',
-        ],
-        [
             'nev' => 'matematika',
             'tipus' => 'emelt',
             'eredmeny' => '90%',

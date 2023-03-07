@@ -33,6 +33,11 @@ return [
             'tipus' => 'közép',
             'eredmeny' => '95%',
         ],
+        [
+            'nev' => 'fizika',
+            'tipus' => 'közép',
+            'eredmeny' => '98%',
+        ],
     ],
     'tobbletpontok' => [
         [

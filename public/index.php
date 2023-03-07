@@ -11,24 +11,20 @@ error_reporting(\E_ALL & ~\E_NOTICE & ~\E_DEPRECATED & ~\E_WARNING);
 
 include __DIR__.'/../vendor/autoload.php';
 
-use Src\Transformer\Transformer;
 use Src\Calculator\Calculator;
+use Src\Transformer\Transformer;
 
-try {
-    $exampleData1 = require 'example1.php';
-    $inputData1 = Transformer::fromArray($exampleData1);
+foreach (range(1, 4) as $key) {
+    try {
+        $exampleData = require "example{$key}.php";
+        $inputData = Transformer::fromArray($exampleData);
+        [$basicPoints, $plusPoints, $sum] = Calculator::calculate($inputData);
 
-    Calculator::calculate($inputData1);
-
-    dd($inputData1);
-
-
-
-}catch (\Exception $e) {
-
-    dd($e->getMessage());
-
+        dump($basicPoints);
+    } catch (\Exception $e) {
+        dump(sprintf('Hiba a(z) %s. bemeneti adat kiértékelése közben: %s',
+            $key,
+            $e->getMessage()
+        ));
+    }
 }
-
-
-

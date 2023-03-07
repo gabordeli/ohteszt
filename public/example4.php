@@ -11,7 +11,7 @@ return [
         [
             'nev' => 'magyar nyelv és irodalom',
             'tipus' => 'közép',
-            'eredmeny' => '70%',
+            'eredmeny' => '15%',
         ],
         [
             'nev' => 'történelem',

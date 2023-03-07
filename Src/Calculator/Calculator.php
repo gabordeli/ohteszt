@@ -4,64 +4,111 @@ declare(strict_types=1);
 
 namespace Src\Calculator;
 
-use Src\Calculator\Calculators\ELTE_IK_ProgramtervezoInformatikusCalculator;
-use Src\Calculator\Calculators\PPKE_BTK_Anglisztika;
+use Src\Calculator\Rules\ELTE_IK_ProgramtervezoInformatikus;
+use Src\Calculator\Rules\PPKE_BTK_Anglisztika;
+use Src\Calculator\Rules\RuleInterface;
+use Src\Entity\Enumeration\Szakkozepiskola\Tantargy;
+use Src\Entity\ValueObject\ErettsegiEredmeny;
 use Src\Entity\ValueObject\InputData;
 
 class Calculator
 {
     use CalculatorValidatorTrait;
 
-    protected static InputData $inputData;
+    private static int $minimumPoint = 20;
 
-    protected static array $calculators = [
-        ELTE_IK_ProgramtervezoInformatikusCalculator::NAME => ELTE_IK_ProgramtervezoInformatikusCalculator::class,
+    private static InputData $inputData;
+
+    protected static array $rules = [
+        ELTE_IK_ProgramtervezoInformatikus::NAME => ELTE_IK_ProgramtervezoInformatikus::class,
         PPKE_BTK_Anglisztika::NAME => PPKE_BTK_Anglisztika::class,
     ];
-    public static function calculate(InputData $inputData): void
+
+    protected static array $requiredAlways = [
+        Tantargy::MAGYAR_NYELV_ES_IRODALOM,
+        Tantargy::TORTENELEM,
+        Tantargy::MATEMATIKA,
+    ];
+
+    public static function calculate(InputData $inputData): array
     {
-        static::$inputData = $inputData;
+        self::$inputData = $inputData;
 
-        self::validateCalculators();
+        self::validateValidatorsCount();
+        self::validateRequiredCalculatorOnInput();
+        self::validateRequiredAlwaysOnInput();
+        self::validateRuleOnInput();
+        self::validateRuleRequiredOneOnInput();
 
-        $basicPoints = self::calculateBasicPoints($inputData);
-        $plusPoints = self::calculatePlusPoints($inputData);
+        $basicPoints = self::calculateBasicPoints();
+        $plusPoints = self::calculatePlusPoints();
 
-        dump($basicPoints);
-        dd($plusPoints);
+        return [
+            $basicPoints,
+            $plusPoints,
+            $basicPoints + $plusPoints,
+        ];
     }
 
-    protected static function getRequiredCalculatorName(): string
+    protected static function getRequiredRuleName(InputData $inputData): string
     {
-        $valasztottSzak = static::$inputData->getValasztottSzak();
+        $valasztottSzak = $inputData->getValasztottSzak();
 
         return $valasztottSzak->getEgyetem()->value.
             $valasztottSzak->getKar()->value.
             $valasztottSzak->getSzak()->value;
     }
 
-
-    protected static function getRequiredCalculator(): object
+    protected static function getRequiredRule(InputData $inputData): string
     {
-        return new self::$calculators[self::getRequiredCalculatorName()];
+        return self::$rules[self::getRequiredRuleName($inputData)];
     }
 
-
-    private static function calculateBasicPoints(InputData $inputData): int
+    private static function calculateBasicPoints(): int
     {
+        $findRequiredPoint = self::findRuleRequiredPoint();
+        $findRuleRequiredOnePoint = self::findRuleRequiredOnePoint();
 
-        //dd($inputData);
+        return ($findRequiredPoint + $findRuleRequiredOnePoint) * 2;
+    }
 
+    private static function findRuleRequiredPoint(): int
+    {
+        /** @var RuleInterface $rule */
+        $rule = self::getRequiredRule(self::$inputData);
 
-        $requiredCalculator = self::getRequiredCalculator();
-
-        dd($requiredCalculator->required);
-
+        foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
+            /* @var ErettsegiEredmeny $item */
+            if ($rule::getRequired() === $item->getTantargy()) {
+                return $item->getEredmeny();
+            }
+        }
 
         return 0;
     }
 
-    private static function calculatePlusPoints(InputData $inputData): int
+    private static function findRuleRequiredOnePoint(): int
+    {
+        /** @var RuleInterface $rule */
+        $rule = self::getRequiredRule(self::$inputData);
+
+        /* @var ErettsegiEredmeny $larger */
+        $larger = null;
+
+        foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
+            /* @var ErettsegiEredmeny $item */
+            if (
+                (null === $larger || $larger->getEredmeny() < $item->getEredmeny())
+            && (true === \in_array($item->getTantargy(), $rule::getRequiredOne(), true))
+            ) {
+                $larger = $item;
+            }
+        }
+
+        return $larger->getEredmeny();
+    }
+
+    private static function calculatePlusPoints(): int
     {
         return 0;
     }
