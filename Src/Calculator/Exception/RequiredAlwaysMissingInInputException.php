@@ -9,7 +9,7 @@ class RequiredAlwaysMissingInInputException extends \Exception
     public static function create(): self
     {
         return new self(sprintf(
-            '[%s]. Az $input nem felel meg a minimális elvárásoknak! ',
+            '[%s]. Nem lehetséges a pontszámítás a kötelező érettségi tárgyak hiánya miatt',
             __CLASS__
         ));
     }

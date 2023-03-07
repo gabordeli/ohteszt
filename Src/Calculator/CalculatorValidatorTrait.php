@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Calculator;
 
+use Src\Calculator\Exception\RequiredAlwaysLowPointsInInputException;
 use Src\Calculator\Exception\RequiredAlwaysMissingInInputException;
 use Src\Calculator\Exception\RequiredOneRuleException;
 use Src\Calculator\Exception\RequiredRuleException;
@@ -35,17 +36,24 @@ trait CalculatorValidatorTrait
         $passed = 0;
 
         foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
-            if (
-                /* @var ErettsegiEredmeny $item */
-                $item->getEredmeny() >= self::$minimumPoint
-                && true === \in_array($item->getTantargy(), self::$requiredAlways, true)
-            ) {
+            /* @var ErettsegiEredmeny $item */
+            if (true === \in_array($item->getTantargy(), self::$requiredAlways, true)) {
                 ++$passed;
             }
         }
 
         if (\count(self::$requiredAlways) > $passed) {
             throw RequiredAlwaysMissingInInputException::create();
+        }
+    }
+
+    private static function validateMinimumPointsOnInput(): void
+    {
+        foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
+            /* @var ErettsegiEredmeny $item */
+            if ($item->getEredmeny() <= self::$minimumPoint) {
+                throw RequiredAlwaysLowPointsInInputException::create($item->getTantargy()->value, static::$minimumPoint);
+            }
         }
     }
 

@@ -45,6 +45,7 @@ class Calculator
         self::validateValidatorsCount();
         self::validateRequiredCalculatorOnInput();
         self::validateRequiredAlwaysOnInput();
+        self::validateMinimumPointsOnInput();
         self::validateRuleOnInput();
         self::validateRuleRequiredOneOnInput();
 
@@ -149,7 +150,6 @@ class Calculator
             if (
                 true === \array_key_exists($item->getTipus()->value, static::$languageExamPoints)
             && $points < static::$languageExamPoints[$item->getTipus()->value]
-
             ) {
                 $points = static::$languageExamPoints[$item->getTipus()->value];
             }

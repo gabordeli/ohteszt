@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="616da937-c4d9-4ce8-aa93-b525a8dfc321" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredAlwaysLowPointsInInputException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php-cs-fixer.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.php-cs-fixer.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Calculator/Calculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/Calculator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Calculator/CalculatorValidatorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Calculator/CalculatorValidatorTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Collection/TobbletPontokCollection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Collection/NylvvizsgakCollection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Enumeration/Tobbletpont/Kategoria.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Enumeration/Nyelvvizsga/Kategoria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Enumeration/Tobbletpont/Nyelv.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Enumeration/Nyelvvizsga/Nyelv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Enumeration/Tobbletpont/Tipus.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Enumeration/Nyelvvizsga/Tipus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/ValueObject/InputData.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/ValueObject/InputData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/ValueObject/TobbletPont.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/ValueObject/Nyelvvizsga.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Transformer/Transformer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Transformer/Transformer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Transformer/Validator/TobbletpontokValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Transformer/Validator/NyelvvizsgakValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Calculator/Exception/RequiredAlwaysMissingInInputException.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678178189011</updated>
-      <workItem from="1678178190170" duration="14692000" />
+      <workItem from="1678178190170" duration="15528000" />
     </task>
     <task id="LOCAL-00001" summary="basic points calculation">
       <created>1678190254687</created>
@@ -102,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678194145295</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="language exam calculation">
+      <created>1678196292834</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678196292834</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +110,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic points calculation" />
     <MESSAGE value="exception renames" />
-    <option name="LAST_COMMIT_MESSAGE" value="exception renames" />
+    <MESSAGE value="language exam calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="language exam calculation" />
   </component>
 </project>
