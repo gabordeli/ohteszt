@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace src\Entity\ValueObject;
+namespace Src\Entity\ValueObject;
 
-use Src\Entity\Enumeration\Tobbletpont\Kategoria;
-use Src\Entity\Enumeration\Tobbletpont\Nyelv;
-use Src\Entity\Enumeration\Tobbletpont\Tipus;
+use Src\Entity\Enumeration\Nyelvvizsga\Kategoria;
+use Src\Entity\Enumeration\Nyelvvizsga\Nyelv;
+use Src\Entity\Enumeration\Nyelvvizsga\Tipus;
 
-class TobbletPont
+class Nyelvvizsga
 {
     private Kategoria $kategoria;
     private Tipus $tipus;

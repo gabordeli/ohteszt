@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Entity\Enumeration\Tobbletpont;
+namespace Src\Entity\Enumeration\Nyelvvizsga;
 
 enum Kategoria: string
 {

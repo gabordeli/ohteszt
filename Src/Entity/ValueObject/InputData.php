@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Src\Entity\ValueObject;
 
 use Src\Entity\Collection\ErettsegiEredmenyekCollection;
-use Src\Entity\Collection\TobbletPontokCollection;
+use Src\Entity\Collection\NylvvizsgakCollection;
 
 class InputData
 {
     protected ValasztottSzak $valasztottSzak;
     protected ErettsegiEredmenyekCollection $erettsegiEredmenyekCollection;
-    protected TobbletPontokCollection $tobbletPontokCollection;
+    protected NylvvizsgakCollection $nyelvvizsgakCollection;
 
     public function setValasztottSzak(ValasztottSzak $valasztottSzak): self
     {
@@ -27,9 +27,9 @@ class InputData
         return $this;
     }
 
-    public function setTobbletPontokCollection(TobbletPontokCollection $tobbletPontokCollection): self
+    public function setNyelvvizsgakCollection(NylvvizsgakCollection $nyelvvizsgakCollection): self
     {
-        $this->tobbletPontokCollection = $tobbletPontokCollection;
+        $this->nyelvvizsgakCollection = $nyelvvizsgakCollection;
 
         return $this;
     }
@@ -44,8 +44,8 @@ class InputData
         return $this->erettsegiEredmenyekCollection;
     }
 
-    public function getTobbletPontokCollection(): TobbletPontokCollection
+    public function getNyelvvizsgakCollection(): NylvvizsgakCollection
     {
-        return $this->tobbletPontokCollection;
+        return $this->nyelvvizsgakCollection;
     }
 }

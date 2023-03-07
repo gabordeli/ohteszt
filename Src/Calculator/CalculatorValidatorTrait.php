@@ -23,7 +23,7 @@ trait CalculatorValidatorTrait
 
     private static function validateRequiredCalculatorOnInput(): void
     {
-        $requiredRule = self::getRequiredRuleName(self::$inputData);
+        $requiredRule = self::getRequiredRuleName();
 
         if (false === \array_key_exists($requiredRule, static::$rules)) {
             throw RequiredRuleException::create($requiredRule);
@@ -52,7 +52,7 @@ trait CalculatorValidatorTrait
     private static function validateRuleOnInput(): void
     {
         /** @var RuleInterface $rule */
-        $rule = self::getRequiredRule(self::$inputData);
+        $rule = self::getRequiredRule();
 
         $passed = false;
 
@@ -71,7 +71,7 @@ trait CalculatorValidatorTrait
     private static function validateRuleRequiredOneOnInput(): void
     {
         /** @var RuleInterface $rule */
-        $rule = self::getRequiredRule(self::$inputData);
+        $rule = self::getRequiredRule();
 
         $passed = false;
 

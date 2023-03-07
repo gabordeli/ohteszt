@@ -7,15 +7,23 @@ namespace Src\Calculator;
 use Src\Calculator\Rules\ELTE_IK_ProgramtervezoInformatikus;
 use Src\Calculator\Rules\PPKE_BTK_Anglisztika;
 use Src\Calculator\Rules\RuleInterface;
+use Src\Entity\Enumeration\Nyelvvizsga\Tipus as NyelvvizsgaTipus;
 use Src\Entity\Enumeration\Szakkozepiskola\Tantargy;
+use Src\Entity\Enumeration\Szakkozepiskola\Tipus;
 use Src\Entity\ValueObject\ErettsegiEredmeny;
 use Src\Entity\ValueObject\InputData;
+use Src\Entity\ValueObject\Nyelvvizsga;
 
 class Calculator
 {
     use CalculatorValidatorTrait;
 
     private static int $minimumPoint = 20;
+    private static int $advanceLevelPoint = 50;
+    private static array $languageExamPoints = [
+        NyelvvizsgaTipus::B2->value => 28,
+        NyelvvizsgaTipus::C1->value => 50,
+    ];
 
     private static InputData $inputData;
 
@@ -50,18 +58,18 @@ class Calculator
         ];
     }
 
-    protected static function getRequiredRuleName(InputData $inputData): string
+    private static function getRequiredRuleName(): string
     {
-        $valasztottSzak = $inputData->getValasztottSzak();
+        $valasztottSzak = self::$inputData->getValasztottSzak();
 
         return $valasztottSzak->getEgyetem()->value.
             $valasztottSzak->getKar()->value.
             $valasztottSzak->getSzak()->value;
     }
 
-    protected static function getRequiredRule(InputData $inputData): string
+    private static function getRequiredRule(): string
     {
-        return self::$rules[self::getRequiredRuleName($inputData)];
+        return self::$rules[self::getRequiredRuleName()];
     }
 
     private static function calculateBasicPoints(): int
@@ -75,7 +83,7 @@ class Calculator
     private static function findRuleRequiredPoint(): int
     {
         /** @var RuleInterface $rule */
-        $rule = self::getRequiredRule(self::$inputData);
+        $rule = self::getRequiredRule();
 
         foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
             /* @var ErettsegiEredmeny $item */
@@ -90,7 +98,7 @@ class Calculator
     private static function findRuleRequiredOnePoint(): int
     {
         /** @var RuleInterface $rule */
-        $rule = self::getRequiredRule(self::$inputData);
+        $rule = self::getRequiredRule();
 
         /* @var ErettsegiEredmeny $larger */
         $larger = null;
@@ -110,6 +118,43 @@ class Calculator
 
     private static function calculatePlusPoints(): int
     {
-        return 0;
+        $advanceLevelsPoint = self::findAdvancedLevelsPoint();
+        $languageExamsPoints = self::findLanguageExams();
+
+        $sum = $advanceLevelsPoint + $languageExamsPoints;
+
+        return min($sum, 100);
+    }
+
+    private static function findAdvancedLevelsPoint(): int
+    {
+        $points = 0;
+
+        foreach (self::$inputData->getErettsegiEredmenyekCollection()->toArray() as $item) {
+            /* @var ErettsegiEredmeny $item */
+            if (Tipus::EMELT === $item->getTipus()) {
+                $points += self::$advanceLevelPoint;
+            }
+        }
+
+        return $points;
+    }
+
+    private static function findLanguageExams(): int
+    {
+        $points = 0;
+
+        foreach (self::$inputData->getNyelvvizsgakCollection()->toArray() as $item) {
+            /* @var Nyelvvizsga $item */
+            if (
+                true === \array_key_exists($item->getTipus()->value, static::$languageExamPoints)
+            && $points < static::$languageExamPoints[$item->getTipus()->value]
+
+            ) {
+                $points = static::$languageExamPoints[$item->getTipus()->value];
+            }
+        }
+
+        return $points;
     }
 }

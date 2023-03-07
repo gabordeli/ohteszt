@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Src\Transformer\Validator;
 
-use Src\Entity\Collection\TobbletPontokCollection;
-use Src\Entity\Enumeration\Tobbletpont\Kategoria;
-use Src\Entity\Enumeration\Tobbletpont\Nyelv;
-use Src\Entity\Enumeration\Tobbletpont\Tipus;
-use Src\Entity\ValueObject\TobbletPont;
+use Src\Entity\Collection\NylvvizsgakCollection;
+use Src\Entity\Enumeration\Nyelvvizsga\Kategoria;
+use Src\Entity\Enumeration\Nyelvvizsga\Nyelv;
+use Src\Entity\Enumeration\Nyelvvizsga\Tipus;
+use Src\Entity\ValueObject\Nyelvvizsga;
 use Src\Transformer\Validator\Exception\NotArrayValidationException;
 
-class TobbletpontokValidator implements ValidatorInterface
+class NyelvvizsgakValidator implements ValidatorInterface
 {
     public const NAME = 'tobbletpontok';
     private const KATEGORIA = 'kategoria';
@@ -22,7 +22,7 @@ class TobbletpontokValidator implements ValidatorInterface
         self::KATEGORIA, self::TIPUS, self::NYELV,
     ];
 
-    public function validate(mixed $input): TobbletPontokCollection
+    public function validate(mixed $input): NylvvizsgakCollection
     {
         $this->validateInputAsArray($input);
         $this->validateArrayItems($input);
@@ -44,17 +44,17 @@ class TobbletpontokValidator implements ValidatorInterface
         }
     }
 
-    protected function create(array $input): TobbletPontokCollection
+    protected function create(array $input): NylvvizsgakCollection
     {
         $out = [];
 
         foreach ($input as $item) {
-            $out[] = (new TobbletPont())
+            $out[] = (new Nyelvvizsga())
                 ->setKategoria(Kategoria::tryFrom(GenericValidator::transformToEnumValue($item[self::KATEGORIA])))
                 ->setTipus(Tipus::tryFrom(GenericValidator::transformToEnumValue($item[self::TIPUS])))
                 ->setNyelv(Nyelv::tryFrom(GenericValidator::transformToEnumValue($item[self::NYELV])));
         }
 
-        return new TobbletPontokCollection(...$out);
+        return new NylvvizsgakCollection(...$out);
     }
 }
